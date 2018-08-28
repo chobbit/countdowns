@@ -1,0 +1,118 @@
+/****** Countdown - Countdown to a single date and then  ******/
+
+
+//JQUERY - To change
+
+  // Set the date we're counting down to
+  var countDownDate = new Date("July 11, 2018 19:00:00").getTime();
+
+
+
+//JQUERY - Don't change anything except at the bottom if a message is to display when countdown finishes
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+      // Get todays date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now an the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Output the result in an element with id="countdown"
+      //document.getElementById("countdown").innerHTML = days + " days : " + hours + " hrs : " // Days + hours
+      document.getElementById("countdown").innerHTML = hours + " hrs : " // No days just hours
+      + minutes + " mins : " + seconds + " secs ";
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = " ";
+      }
+  }, 1000);
+  
+  
+  
+//HTML
+
+  <div id="countdown">&nbsp;</div>
+
+
+
+/****** Countdown - Repeat each year ******/
+
+//JQUERY
+
+  //countdown math
+
+  function pad (n,width,z) {
+      z = z || '0';
+      n = n + '';
+      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+  }
+
+	var countdownTo = new Date("November 23, 2018 00:00:00").getTime();
+
+	setInterval(function() {
+
+		var today = new Date().getTime();
+		var distance = countdownTo - today;
+
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+		$('.timer .days .number').html(pad(days, 2));
+		$('.timer .hours .number').html(pad(hours, 2));
+		$('.timer .mins .number').html(pad(mins, 2));
+		$('.timer .secs .number').html(pad(secs, 2));
+
+	}, 1000);
+
+
+
+//HTML
+
+ <div class="timer">
+ 
+         <div class="col days">
+            <span class="label">Days</span>
+            <span class="number"></span>
+         </div>
+
+         <span class="col sep">:</span>
+
+         <div class="col hours">
+            <span class="label">Hours</span>
+            <span class="number"></span>
+         </div>
+
+         <span class="col sep">:</span>
+
+         <div class="col mins">
+            <span class="label">Mins</span>
+            <span class="number"></span>
+         </div>
+
+         <span class="col sep">:</span>
+
+         <div class="col secs">
+            <span class="label">Secs</span>
+            <span class="number"></span>
+         </div>
+
+      </div>
+      
+      
+      
+      
+/****** Countdown - Repeat each day ******/
+ 
+ 
