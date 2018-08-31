@@ -1,4 +1,4 @@
-/****** Countdown - Countdown to a single date and then  ******/
+/****** Countdown - Countdown to a single date and then display message or nothing  ******/
 
 
 //JQUERY - To change
@@ -30,7 +30,7 @@
       document.getElementById("countdown").innerHTML = hours + " hrs : " // No days just hours
       + minutes + " mins : " + seconds + " secs ";
 
-      // If the count down is over, write some text 
+      // If the count down is over, add amessage or leave blank to hide counter
       if (distance < 0) {
           clearInterval(x);
           document.getElementById("countdown").innerHTML = " ";
@@ -42,6 +42,11 @@
 //HTML
 
   <div id="countdown">&nbsp;</div>
+
+
+
+
+
 
 
 
@@ -112,7 +117,30 @@
       
       
       
-      
+   
+   
+   
+   
 /****** Countdown - Repeat each day ******/
- 
- 
+
+//JQUERY
+	setInterval(function time(){
+	  var d = new Date();
+	  var hours = 24 - d.getHours();
+	  var min = 60 - d.getMinutes();
+	  if((min + '').length == 1){
+	    min = '0' + min;
+	  }
+	  var sec = 60 - d.getSeconds();
+	  if((sec + '').length == 1){
+	    sec = '0' + sec;
+	  }
+	  jQuery('#24h-countdown-repeat').html(hours+':'+min+':'+sec);
+	}, 1000); 
+
+
+
+//HTML
+	<div id="24h-countdown-repeat" style="color: inherit; font-size: inherit; font-weight: inherit;">&nbsp;</div>
+	
+	
